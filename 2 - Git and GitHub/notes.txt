@@ -1,0 +1,10 @@
+Create a Branch
+git branch branch-name
+List all branches
+git branch -a
+Switch branch
+git switch branch name
+Merge from current to master branch
+git merge branch name
+deleting a branch
+$ git branch -d feature
