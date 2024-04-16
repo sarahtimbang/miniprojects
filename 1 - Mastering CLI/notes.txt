@@ -12,5 +12,6 @@ to connect to online git
  git remote add origin https://github.com/sarahtimbang/onecodecamp.git
 checking if you connected to the remote git 
  git remote -v
-
+set the branch to main
  git branch -M main
+ 
