@@ -1,0 +1,16 @@
+Create a Branch
+git branch branch-name
+List all branches
+git branch -a
+Switch branch
+git switch branch name
+Merge from current to master branch
+git merge branch name
+deleting a branch
+$ git branch -d feature
+to connect to online git
+ git remote add origin https://github.com/sarahtimbang/onecodecamp.git
+checking if you connected to the remote git 
+ git remote -v
+
+ git branch -M main
