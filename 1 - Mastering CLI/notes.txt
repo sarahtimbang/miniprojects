@@ -15,3 +15,5 @@ checking if you connected to the remote git
 set the branch to main
  git branch -M main
  
+ forking is when you want to collaborate with repository of company.
+ we are creating a branch from master branch
