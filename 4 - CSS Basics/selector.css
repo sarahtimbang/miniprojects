@@ -1,0 +1,27 @@
+*{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+span{
+    background-color: green;
+    color:white;
+    font-size: 18px;
+}
+.class-name{
+    color:red;
+    background-color: pink;
+}
+#id-name{
+    font-weight: bold;
+}
+h1, h2, .parag{
+    color: orange;
+}
+.ancestor p {
+    font-style: italic;
+}
+a:hover {
+    color:red;
+}
+a:active{
+    color:yellowgreen;
+}

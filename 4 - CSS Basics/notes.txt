@@ -1,0 +1,2 @@
+link element for external css
+<link rel='stylesheet' href='<>' />
