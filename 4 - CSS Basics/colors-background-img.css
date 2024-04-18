@@ -1,0 +1,20 @@
+.color-example {
+    color: red;
+    background-color: #ececec;
+}
+.background-example {
+    background-color: rgb(28, 162, 48);
+}
+.background-position-example {
+    background: url(background.jpg) no-repeat;
+    height: 400px;
+    width: 400px;
+}
+.opacity-example {
+    background-color: rgba(28, 162, 48, 0.1);
+}
+.image-sizing-example {
+    width: 300px;
+    height: auto;
+    margin: auto;
+}
