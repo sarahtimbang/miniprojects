@@ -1,0 +1,82 @@
+/* flex wrap */
+
+.flexContainer {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+/* Flex Direction */
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+}
+/* Flex grow - Willingnes to grow */
+.flexItem1 {
+    flex-grow: 1;
+}
+
+/* Flex Direction */
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+}
+.flexItems {
+    width: 200px;
+    margin: 10px;
+    border: 2px black solid;
+    background-color: lightblue;
+    text-align: center;
+    justify-content: center;
+}
+/* Flex grow - Willingnes to grow */
+.flexItem1 {
+    flex-grow: 1;
+}
+
+.flexItem2 {
+    flex-grow: 2;
+}
+
+
+.flexItem3 {
+    flex-grow: 0;
+}
+/* Flex shrink - Willingness to shrink */
+
+.flexItem1 {
+    flex-shrink: 1;
+}
+
+.flexItem2 {
+    flex-shrink: 1;
+}
+
+
+.flexItem3 {
+    flex-shrink: 1;
+}
+
+.cross-axis {
+    position: absolute;
+    right: 50%;
+    height: 1080px;
+    width: 3px;
+    background-color: blue;
+}
+
+.main-axis {
+    position: absolute;
+    top: 50%;
+    height: 3px;
+    width: 2160px;
+    background-color: red;
+}
+
+.container {
+    height: 300px;
+    background-color: yellowgreen;
+    position: relative;
+    overflow: hidden;
+}
