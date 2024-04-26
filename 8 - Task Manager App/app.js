@@ -139,7 +139,7 @@ function deleteOrCompleteTodo(e) {
     if (item.classList[0] === "complete-btn") {
       const todo = item.parentElement;
       todo.classList.toggle("completed");
-    }
+    } 
   }
 
   // 9. Function to filter task based on completion status
