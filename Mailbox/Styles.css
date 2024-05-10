@@ -29,7 +29,7 @@ a {
 .container {
 	max-width: 1000px;
 	width: 100%;
-	background: #D3d3d3;
+	background: #fff;
 	border-radius: 8px;
 	overflow: hidden;
 	min-height:500px;
