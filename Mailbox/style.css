@@ -1,8 +1,20 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0;  
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  body{
+    height: 100vh;
+    overflow-y: hidden;
+  }
+  li {
+    margin-left: 16px;
   }
   
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
   /* Header */
   .header__left img {
     object-fit: contain;
@@ -135,16 +147,11 @@
   }
   
   /* main body */
-  .main__body {
+  .body {
     display: flex;
     height: 100vh;
   }
   
-  body {
-    height: 100vh;
-    overflow-y: hidden;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
 
   .main {
     flex: 1;
@@ -273,15 +280,14 @@
     color: gray;
   }
   /*New Message*/
-  li {
-    margin-left: 16px;
+  .senders{
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
   }
-  
-  a {
-    cursor: pointer;
-    text-decoration: none;
-  }
-
   .toolbar {
     padding: 16px;
     background: #eee;
@@ -340,7 +346,7 @@
     align-items: center;
     grid-gap: 10px;
   }
-  .toolbar .btn-toolbar button {
+  .toolbar .btn-toolbar button, .btn-toolbar label {
     background: #fff;
     border: 2px solid #ddd;
     border-radius: 6px;
@@ -352,7 +358,7 @@
     justify-content: center;
     font-size: 18px;
   }
-  .toolbar .btn-toolbar button:hover {
+  .toolbar .btn-toolbar button:hover,.btn-toolbar label:hover {
     background: #f3f3f3;
   }
   #content {
@@ -361,11 +367,16 @@
     max-height: 300px;
     overflow: auto;
   }
-  content:empty:not(:focus):before {
+  .contentDrag{
+    border:5px dashed #999999;
+  }
+  #content[contenteditable="true"]:empty:not(:focus):before {
     content: attr(data-text);
     color: #999999;
   }
   #show-code[data-active="true"] {
     background: #eee;
   }
-  
+  input[type="file"] {
+    display: none;
+}

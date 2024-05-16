@@ -12,8 +12,6 @@ function addLink() {
 }
 
 
-
-
 const content = document.getElementById('content');
 
 content.addEventListener('mouseenter', function () {
@@ -28,39 +26,44 @@ content.addEventListener('mouseenter', function () {
 		})
 	})
 })
+//drag and drop file upload
+function dragOverHandler(ev) {
+	console.log('File(s) in drop zone');
+	content.classList.add("contentDrag");
+	// Prevent default behavior (Prevent file from being opened)
+	ev.preventDefault();
+  }
 
+  function dropHandler(ev) {
+	console.log('File(s) dropped');
+	content.classList.remove("contentDrag");
+	// Prevent default behavior (Prevent file from being opened)
+	ev.preventDefault();
 
-const showCode = document.getElementById('show-code');
-let active = false;
-
-showCode.addEventListener('click', function () {
-	showCode.dataset.active = !active;
-	active = !active
-	if(active) {
-		content.textContent = content.innerHTML;
-		content.setAttribute('contenteditable', false);
+	if (ev.dataTransfer.items) {
+	  // Use DataTransferItemList interface to access the file(s)
+	  for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+		// If dropped items aren't files, reject them
+		if (ev.dataTransfer.items[i].kind === 'file') {
+		  var file = ev.dataTransfer.items[i].getAsFile();
+		alert('... file[' + i + '].name = ' + file.name);
+		}
+	  }
 	} else {
-		content.innerHTML = content.textContent;
-		content.setAttribute('contenteditable', true);
+	  // Use DataTransfer interface to access the file(s)
+	  for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+		alert('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+	  }
 	}
-})
+	// Pass event to removeDragData for cleanup
+	removeDragData(ev)
+  }
 
+  function removeDragData(ev) {
+	console.log('Removing drag data');
 
-
-const filename = document.getElementById('filename');
-
-function fileHandle(value) {
-	if(value === 'new') {
-		content.innerHTML = '';
-		filename.value = 'untitled';
-	} else if(value === 'txt') {
-		const blob = new Blob([content.innerText])
-		const url = URL.createObjectURL(blob)
-		const link = document.createElement('a');
-		link.href = url;
-		link.download = `${filename.value}.txt`;
-		link.click();
-	} else if(value === 'pdf') {
-		html2pdf(content).save(filename.value);
+	if (ev.dataTransfer.items) {
+	  // Use DataTransferItemList interface to remove the drag data
+	  ev.dataTransfer.items.clear();
 	}
-}
+  }
