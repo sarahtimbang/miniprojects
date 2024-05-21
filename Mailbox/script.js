@@ -60,10 +60,17 @@ function dragOverHandler(ev) {
   }
 
   function removeDragData(ev) {
-	console.log('Removing drag data');
-
+	content.classList.remove("contentDrag");
 	if (ev.dataTransfer.items) {
 	  // Use DataTransferItemList interface to remove the drag data
 	  ev.dataTransfer.items.clear();
 	}
   }
+  //print email
+  function printDiv(id) {
+	var print = document.getElementById(id).innerHTML;
+	var original = document.body.innerHTML;
+	document.body.innerHTML = print;
+	window.print();
+	document.body.innerHTML = original;
+}
