@@ -11,7 +11,8 @@
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' />
   <link rel='stylesheet' href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/styles/style.css">
   <title>Compose Message</title>
 </head>
@@ -19,20 +20,22 @@
 <body>
   <!-- Top navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand bg-dark" href="#">Personal Mailbox</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="logo"></div>
+    <a class="navbar-brand bg-dark space" href="#">Personal Mailbox</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <form class="navbar-form navbar-right input-group">
+      <form  class="input-group">
 
-        <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" />
+        <input type="text" id="search" class="form-control form-control-sm" placeholder="Search Mail" aria-label="Search Mail" />
         <div class="input-group-append">
           <span class="input-group-text material-icons "> search </span>
         </div>
-  
+
       </form>
       <ul class="navbar-nav mr-auto">
         <li class="nav-link"><a href="#"><span class="material-icons"> apps </span></a></li>
@@ -45,71 +48,68 @@
 
   <!-- Begin page content -->
   <div class="container-fluid">
-      <!-- Left Navbar -->
-      <div class="row">
-        <div class="col-3 sidebar">
+    <!-- Left Navbar -->
+    <div class="row">
+      <div class="col-2 sidebar">
 
-          <a href="compose.html"><button class="composeButton"><span class="material-icons white"> add
-          </span>Compose</button></a>
-      <a href="index.html">
-        <div class="sidebarOption sidebarOption__active">
-          <span class="material-icons"> inbox </span>
-          <h3>Inbox</h3>
+        <a href="compose.html"><button class="majorButton"><span title="Compose"><i class='bx bx-pencil'></i> Compose</span></button></a>
+        <a href="index.html">
+          <div class="sidebarOption">
+            <span class="material-icons"> inbox </span>
+            <h3>Inbox</h3>
+          </div>
+        </a>
+
+        <div class="sidebarOption">
+          <span class="material-icons"> star </span>
+          <h3>Starred</h3>
         </div>
-      </a>
 
-      <div class="sidebarOption">
-        <span class="material-icons"> star </span>
-        <h3>Starred</h3>
-      </div>
-
-      <div class="sidebarOption">
-        <span class="material-icons"> label_important </span>
-        <h3>Important</h3>
-      </div>
-
-      <div class="sidebarOption">
-        <span class="material-icons"> near_me </span>
-        <h3>Sent</h3>
-      </div>
-
-      <div class="sidebarOption">
-        <span class="material-icons"> note </span>
-        <h3>Drafts</h3>
-      </div>
-
-      <div class="sidebarOption">
-        <span class="material-icons"> expand_more </span>
-        <h3>More</h3>
-      </div>
-
-      <div class="sidebarFooter">
-        <div class="sidebar__footerIcons">
-          <span class="material-icons"> person </span>
-          <span class="material-icons"> duo </span>
-          <span class="material-icons"> phone </span>
+        <div class="sidebarOption">
+          <span class="material-icons"> label_important </span>
+          <h3>Important</h3>
         </div>
-      </div>
 
-          <!--end nav side-->
+        <div class="sidebarOption">
+          <span class="material-icons"> near_me </span>
+          <h3>Sent</h3>
         </div>
-        <div class="col-9 main">
-          <!--Start main-->
+
+        <div class="sidebarOption">
+          <span class="material-icons"> note </span>
+          <h3>Drafts</h3>
+        </div>
+
+        <div class="sidebarOption">
+          <span class="material-icons"> expand_more </span>
+          <h3>More</h3>
+        </div>
+        <!--end nav side-->
+      </div>
+      <div class="col-10 main">
+        <!--Start main-->
           <div class="toolbar">
-            <input type="text" placeholder="To:" class="form-control form-control-sm" />
-            <input type="text" placeholder="Cc:" class="form-control form-control-sm" />
-            <input type="text" placeholder="Bc:" class="form-control form-control-sm" />
-            <input type="text" placeholder="Subject:" class="form-control form-control-sm" />
-            <div class="tools">
-              <select onchange="formatDoc('formatBlock', this.value);" class="selectpicker form-control-sm" title="Size">
-                <option value="h1" data-content="<span class='h1'>Heading 1</span>">Heading 1</option>
-                <option value="h2" data-content="<span class='h2'>Heading 2</span>">Heading 2</option>
-                <option value="h3" data-content="<span class='h3'>Heading 3</span>">Heading 3</option>
-                <option value="h4" data-content="<span class='h4'>Heading 4</span>">Heading 4</option>
-                <option value="h5" data-content="<span class='h5'>Heading 5</span>">Heading 5</option>
-                <option value="h6" data-content="<span class='h6'>Heading 6</span>">Heading 6</option>
+      
+              <input type="hidden" placeholder="Filename" value="untitled" id="filename">
+              <select id="saveAs" onchange="fileHandle(this.value); this.selectedIndex=0" class="show-tick form-control-sm selectpicker">
+                <option data-content="<i class='bx bx-save'></i>"></option>
+                <option value="txt">Save as txt</option>
+                <option value="pdf">Save as pdf</option>
               </select>
-              <select onchange="formatDoc('fontName', this.value);" class="selectpicker form-control-sm" title="Font Family">
+              <select id="size" name="size" onchange="formatDoc('formatBlock', this.value);"
+                class="show-tick form-control-sm selectpicker">
+                <option data-content="<i class='bx bx-font-size'></i>">Font Size</option>
+                <option value="h1" class='h1'>Heading 1</option>
+                <option value="h2" class='h2'>Heading 2</option>
+                <option value="h3" class='h3'>Heading 3</option>
+                <option value="h4" class='h4'>Heading 4</option>
+                <option value="h5" class='h5'>Heading 5</option>
+                <option value="h6" class='h6'>Heading 6</option>
+              </select>
+      
+              <select id="fontFamily" onchange="formatDoc('fontName', this.value);"
+                class="show-tick form-control-sm selectpicker">
+                <option data-content="<i class='bx bx-font-family'></i>">Font Family</option>
                 <option value="Arial" class="arial">Arial</option>
                 <option value="Brush Script MT" class="brushScript">Brush Script MT</option>
                 <option value="Calibri" class="calibri">Calibri</option>
@@ -121,27 +121,23 @@
                 <option value="Times New Roman" class="times">Times New Roman</option>
                 <option value="Verdana" class="verdana">Verdana</option>
               </select>
-              <div class="color">
-                <span>Color</span>
-                <input type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
-              </div>
-              <div class="color">
-                <span>Highlight</span>
-                <input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#fff';">
-              </div>
-              <div class="btn-toolbar">
-                <button onclick="printDiv('content')"><i class='bx bx-printer' title='Print'
-                    title="Print Page"></i></button>
-              </div>
-            </div>
-            <div class="btn-toolbar">
+              <span class="color" title="Text Color">
+                <input id="textColor" type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
+                <i class='bx bx-font-color'></i>
+              </span>
+              <span class="color" title="Highlight">
+                <input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#ffffff';">
+                <i class='bx bxs-color-fill'></i>
+              </span>
+      
               <button onclick="formatDoc('undo')"><i class='bx bx-undo' title='Undo'></i></button>
               <button onclick="formatDoc('redo')"><i class='bx bx-redo' title='Redo'></i></button>
               <button onclick="formatDoc('bold')"><i class='bx bx-bold' title='Bold'></i></button>
               <button onclick="formatDoc('underline')"><i class='bx bx-underline' title='Underline'></i></button>
               <button onclick="formatDoc('italic')"><i class='bx bx-italic' title='Italic'></i></button>
-              <button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough'
-                  title='Striketrough'></i></button>
+              <button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough' title='Striketrough'></i></button>
+              <button onclick="formatDoc('Superscript')"><i class='bx bxs-chevron-up' title="superscript"></i></button>
+              <button onclick="formatDoc('Subscript')"><i class='bx bxs-chevron-down' title="subscript"></i></button>
               <button onclick="formatDoc('justifyLeft')"><i class='bx bx-align-left' title='Left'></i></button>
               <button onclick="formatDoc('justifyCenter')"><i class='bx bx-align-middle' title='Middle'></i></button>
               <button onclick="formatDoc('justifyRight')"><i class='bx bx-align-right' title='Right'></i></button>
@@ -150,35 +146,57 @@
               <button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul' title='Bullets'></i></button>
               <button onclick="addLink()"><i class='bx bx-link' title='Add link'></i></button>
               <button onclick="formatDoc('unlink')"><i class='bx bx-unlink' title='Unlink'></i></button>
-              <label for="fileUpload"><i class='bx bx-paperclip' title="Attachment"></i></label>
-              <input id="fileUpload" type="file" class="file" />
-              <label for="imgUpload"><i class='bx bx-image-add' title="Insert Image"></i></label>
-              <input id="imgUpload" class="file" type="file" accept="image/*" />
-            </div>
+              <button><label for="fileUpload"><i class='bx bx-paperclip' title="Attachment"></i></label></button>
+              <input id="fileUpload" name="fileUpload" type="file" class="file" />
+              <button><label for="imgUpload"><i class='bx bx-image-add' title="Insert Image"></i></label></button>
+              <input id="imgUpload" name="imgUpload" class="file" type="file" accept="image/*" />
+              <button onclick="printDiv('dropZone')"><i class='bx bx-printer' title="Print Page"></i></button>
+            
           </div>
-          <div id="content" contenteditable="true" spellcheck="false" data-text="Type Message or Drop files"
-            ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"></div>
-  
-          <!--end main-->
-        </div>
+            <form id="message">
+            <input type="text" id="to" placeholder="To:" class="form-control form-control-sm" />
+            <input type="text" id="cc" placeholder="Cc:" class="form-control form-control-sm" />
+            <input type="text" id="bcc" placeholder="Bc:" class="form-control form-control-sm" />
+            <input type="text" id="subject" placeholder="Subject:" class="form-control form-control-sm" />
+          
+          <div id="body" class="form-control form-control-sm dropZone" contenteditable="true" spellcheck="false"
+            data-text="Type Message or Drop files" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"></div>
+          <button id="send" class="majorButton text-end send"><i class='bx bx-send' title="Send"> Send</i></button>
+          
+        	<div class="drop-zone">
+            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+            <input type="file" name="myFile" class="drop-zone__input">
+          </div>
+        </form>
       </div>
+      <!--end main-->
       
-
-      <footer class="footer">
-        <div class="container-fluid">
-          <i class='bx bx-send pull-right' title="Send"> Send</i>
-        </div>
-      </footer>
     </div>
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    <script src="Script.js"></script>
+  </div>
+  <footer class="footer">
+    <div class="footerIcons col-2">
+      <span class="material-icons"> person </span>
+      <span class="material-icons"> duo </span>
+      <span class="material-icons"> phone </span>
+    </div>
+    </div>
+    <div class="footerText col-10"><span class="license">Copyright 2024</span><span class="footerMenu">Inbox | Sent | Drafts</span> </div>
+  </footer>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  <script src="Script.js"></script>
 
 
 </body>

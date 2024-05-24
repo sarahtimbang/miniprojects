@@ -11,11 +11,10 @@ function addLink() {
 	formatDoc('createLink', url);
 }
 
-
-const content = document.getElementById('content');
-
+//make #body editable
+const content = document.getElementById('body');
 content.addEventListener('mouseenter', function () {
-	const a = content.querySelectorAll('a');
+	const a = content.querySelectorAll('#dropZone');
 	a.forEach(item=> {
 		item.addEventListener('mouseenter', function () {
 			content.setAttribute('contenteditable', false);
@@ -26,51 +25,105 @@ content.addEventListener('mouseenter', function () {
 		})
 	})
 })
-//drag and drop file upload
-function dragOverHandler(ev) {
-	console.log('File(s) in drop zone');
-	content.classList.add("contentDrag");
-	// Prevent default behavior (Prevent file from being opened)
-	ev.preventDefault();
-  }
 
-  function dropHandler(ev) {
-	console.log('File(s) dropped');
-	content.classList.remove("contentDrag");
-	// Prevent default behavior (Prevent file from being opened)
-	ev.preventDefault();
-
-	if (ev.dataTransfer.items) {
-	  // Use DataTransferItemList interface to access the file(s)
-	  for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-		// If dropped items aren't files, reject them
-		if (ev.dataTransfer.items[i].kind === 'file') {
-		  var file = ev.dataTransfer.items[i].getAsFile();
-		alert('... file[' + i + '].name = ' + file.name);
-		}
-	  }
-	} else {
-	  // Use DataTransfer interface to access the file(s)
-	  for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-		alert('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-	  }
-	}
-	// Pass event to removeDragData for cleanup
-	removeDragData(ev)
-  }
-
-  function removeDragData(ev) {
-	content.classList.remove("contentDrag");
-	if (ev.dataTransfer.items) {
-	  // Use DataTransferItemList interface to remove the drag data
-	  ev.dataTransfer.items.clear();
-	}
-  }
-  //print email
-  function printDiv(id) {
+//print email
+function printDiv(id) {
 	var print = document.getElementById(id).innerHTML;
 	var original = document.body.innerHTML;
 	document.body.innerHTML = print;
 	window.print();
 	document.body.innerHTML = original;
 }
+
+//saving message to file
+const filename = document.getElementById('filename');
+const mailContent = document.getElementById('message');
+function fileHandle(value) {
+	if(value === 'new') {
+		mailContent.innerHTML = '';
+		filename.value = 'untitled';
+	} else if(value === 'txt') {
+		const blob = new Blob([content.innerText])
+		const url = URL.createObjectURL(blob)
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = `${filename.value}.txt`;
+		link.click();
+	} else if(value === 'pdf') {
+		html2pdf(content).save(filename.value);
+	}
+}
+//grag and drop upload
+document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+	const dropZoneElement = inputElement.closest(".drop-zone");
+  
+	dropZoneElement.addEventListener("click", (e) => {
+	  inputElement.click();
+	});
+  
+	inputElement.addEventListener("change", (e) => {
+	  if (inputElement.files.length) {
+		updateThumbnail(dropZoneElement, inputElement.files[0]);
+	  }
+	});
+  
+	dropZoneElement.addEventListener("dragover", (e) => {
+	  e.preventDefault();
+	  dropZoneElement.classList.add("drop-zone--over");
+	});
+  
+	["dragleave", "dragend"].forEach((type) => {
+	  dropZoneElement.addEventListener(type, (e) => {
+		dropZoneElement.classList.remove("drop-zone--over");
+	  });
+	});
+  
+	dropZoneElement.addEventListener("drop", (e) => {
+	  e.preventDefault();
+  
+	  if (e.dataTransfer.files.length) {
+		inputElement.files = e.dataTransfer.files;
+		updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+	  }
+  
+	  dropZoneElement.classList.remove("drop-zone--over");
+	});
+  });
+  
+  /**
+   * Updates the thumbnail on a drop zone element.
+   *
+   * @param {HTMLElement} dropZoneElement
+   * @param {File} file
+   */
+  function updateThumbnail(dropZoneElement, file) {
+	let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+  
+	// First time - remove the prompt
+	if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+	  dropZoneElement.querySelector(".drop-zone__prompt").remove();
+	}
+  
+	// First time - there is no thumbnail element, so lets create it
+	if (!thumbnailElement) {
+	  thumbnailElement = document.createElement("div");
+	  thumbnailElement.classList.add("drop-zone__thumb");
+	  dropZoneElement.appendChild(thumbnailElement);
+	}
+  
+	thumbnailElement.dataset.label = file.name;
+  
+	// Show thumbnail for image files
+	if (file.type.startsWith("image/")) {
+	  const reader = new FileReader();
+  
+	  reader.readAsDataURL(file);
+	  reader.onload = () => {
+		thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+	  };
+	} else {
+	  thumbnailElement.style.backgroundImage = null;
+	}
+  }
+  
+
